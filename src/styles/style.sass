@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap')
+// Font Families & weights
+$space_grotesk: 'Space Grotesk', sans-serif
+$font_weight: 500
+$font_size: 18px
+
+// Primary Colors
+$linear_gradient_color_1: hsl(249, 99%, 64%) // active input border color 1
+$linear_gradient_color_2: hsl(278, 94%, 30%) // active input border color 2
+$red_input_error: hsl(0, 100%, 60%)
+
+// Neutral Colors
+$white: hsl(0, 0%, 100%)
+$light_grayish_violet: hsl(270, 3%, 87%)
+$dark_grayish_violet: hsl(279, 6%, 55%)
+$very_dark_violet: hsl(278, 68%, 11%)
+
+*,
+*::before,
+*::after
+    box-sizing: border-box
+
+*
+    margin: 0
+    padding: 0
+    scroll-behavior: smooth
+
+html
+    font-size: 62.5%
+
+body
+    font-size: 1.6rem
+    display: flex
+    justify-content: center
+    font-family: $space_grotesk
+
+img
+    width: 100%
+    height: auto
+    object-fit: cover
+
+.container
+    // border: 1px solid black
+    width: 100%
+    max-width: 36.5rem
+    display: grid
+    grid-template-areas: "header" "main"
+    grid-template-rows: 22rem 1fr
+
+
+
+@media screen and (min-width: 1200px)
+    .container
+        max-width: 100%
+        grid-template-areas: "header main"
+        grid-template-columns: 483px 1fr
+        // grid-template-rows: 100vh
+
+
+header
+    grid-area: header
+    background: url('../images/bg-main-mobile.png')
+    position: relative
+    .card_front_details
+        width: 100%
+        position: absolute
+        bottom: -4.6rem
+        left: 2rem
+        z-index: 1000
+        .card_front
+            // border: 1px solid red
+            position: relative
+            max-width: 27rem
+        svg
+            position: absolute
+            left: 2rem
+            top: 2rem
+        .card_number_interactive
+            position: absolute
+            bottom: 5rem
+            left: 2rem
+            letter-spacing: 2.5px
+            color: $white
+        .card_name_interactive
+            position: absolute
+            bottom: 2.5rem
+            left: 2rem
+            letter-spacing: 1px
+            font-size: .8rem
+            font-weight: $font_weight
+            text-transform: uppercase
+            color: $white
+        .exp_date_interactive
+            position: absolute
+            color: $white
+            bottom: 2.5rem
+            right: 11.5rem
+            font-size: .8rem
+            font-weight: $font_weight
+            letter-spacing: 1px
+    .card_back_details
+        width: 100%
+        position: absolute
+        top: 3rem
+        left: 7rem
+        .card_back
+            position: relative
+            max-width: 27rem
+        .card_back_interactive
+            position: absolute
+            top: 6.8rem
+            right: 13rem
+            font-size: .8rem
+            font-weight: $font_weight
+            letter-spacing: 1px
+            color: $white
+
+@media screen and (min-width: 1200px)
+    header
+        background: url('../images/bg-main-desktop.png')
+        min-height: 100vh
+        .card_front_details
+            bottom: unset
+            top: 28.5rem
+            left: 21rem
+            .card_front
+                max-width: 34rem
+            .card_number_interactive
+                font-size: 2.2rem
+                bottom: 5.5rem
+            .card_name_interactive
+                font-size: 1rem
+            .exp_date_interactive
+                right: 16rem
+                font-size: 1rem
+                // color: black
+        .card_back_details
+            top: 50rem
+            left: 30rem
+            .card_back
+                max-width: 34rem
+            .card_back_interactive
+                // color: black
+                top: 8.5rem
+                right: 19rem
+
+                  
+
+            
+
+main
+    grid-area: main
+    form .incomplete_state
+        display: grid
+        padding: 9rem 2rem 4rem 2rem
+        gap: 2rem
+        .form_el
+            display: flex
+            gap: 1rem
+            flex-direction: column
+            label
+                color: $very_dark_violet
+                text-transform: uppercase
+                font-size: 1.1rem
+                font-weight: $font_weight
+                letter-spacing: 1.5px
+            input
+                padding-left: 1.5rem
+                height: 5rem
+                outline: none
+                border: 1px solid $light_grayish_violet
+                border-radius: 8px
+                transition: border 0.2s ease-in-out
+                &::placeholder
+                    font-family: $space_grotesk
+                    color: $dark_grayish_violet
+                    font-weight: 500
+                    font-size: 1.6rem
+                &:focus
+                    border: 1px solid $linear_gradient_color_2
+                &[error=""]
+                    border: 1px solid $red_input_error
+            .error
+                margin-top: -.25rem
+                color: $red_input_error
+                font-size: 1rem
+                width: 100%
+                max-width: 0
+                max-height: 0
+                overflow: hidden
+                transition: all 0.2s ease-in-out
+                &[error=""]
+                    max-width: unset
+                    max-height: fit-content
+                    overflow: auto
+            &:last-of-type
+                flex-direction: row
+                .expiration_container
+                    display: flex
+                    flex-direction: column
+                    gap: 1rem
+                    .exp_input_container
+                        display: flex
+                        flex-direction: column
+                        gap: 1rem
+                        .exp_inputs
+                            display: flex
+                            flex-direction: row
+                            gap: 1rem
+                        input
+                            max-width: 6.5rem
+                .cvc_input_container
+                    display: flex
+                    flex-direction: column
+                    gap: 1rem
+                    input
+                        width: 100%
+        .submit_button
+            height: 5rem
+            font-family: inherit
+            background: $very_dark_violet
+            color: $white
+            font-weight: 500
+            font-size: 1.6rem
+            border-radius: 8px
+            border: none
+            cursor: pointer
+
+
+main form .incomplete_state[complete=""]
+    padding: 0
+    max-width: 0
+    height: 0
+    min-height: 0
+    overflow: hidden
+
+@media screen and (min-width: 1200px)
+    main form .incomplete_state
+        justify-content: center
+        align-items: center
+        align-content: center
+        height: auto
+        min-height: 100vh
+
+                    
+                    
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+    -webkit-appearance: none
+    margin: 0
+
+input[type=number]
+    -moz-appearance: textfield
+
+.complete_state
+    // border: 1px solid red
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 100%
+    max-width: 0
+    height: 0
+    overflow: hidden
+    &[complete=""]
+        padding-inline: 2rem
+        max-width: unset
+        height: 468.333px
+        overflow: auto
+    svg
+        margin-top: 8.5rem
+        margin-bottom: 3rem
+    h1
+        color: $very_dark_violet
+        font-size: 2.5rem
+        margin-bottom: 2rem
+        font-weight: $font_weight
+        text-transform: uppercase
+        letter-spacing: 3px
+    p
+        color: $dark_grayish_violet
+        margin-bottom: 4rem
+        font-weight: $font_weight
+    .continue_button
+        width: 100%
+        height: 5rem
+        background: $very_dark_violet
+        border: none
+        color: $white
+        font-family: inherit
+        font-weight: 500
+        font-size: 1.6rem
+        border-radius: 8px
+        cursor: pointer
+
+@media screen and (min-width: 1200px)
+    .complete_state
+        justify-content: center
+        &[complete=""]
+            min-height: 100vh
+        .continue_button
+            max-width: 32.5rem
+            margin-bottom: 3.9rem
+
