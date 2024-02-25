@@ -34,6 +34,24 @@ body
     justify-content: center
     font-family: $space_grotesk
 
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select:focus,
+textarea
+    font-size: 16px
+
 img
     width: 100%
     height: auto
@@ -171,11 +189,12 @@ main
                 border: 1px solid $light_grayish_violet
                 border-radius: 8px
                 transition: border 0.2s ease-in-out
+                font-size: 16px
                 &::placeholder
                     font-family: $space_grotesk
                     color: $dark_grayish_violet
                     font-weight: 500
-                    font-size: 1.6rem
+                    font-size: 16px
                 &:focus
                     border: 1px solid $linear_gradient_color_2
                 &[error=""]
@@ -207,6 +226,7 @@ main
                             display: flex
                             flex-direction: row
                             gap: 1rem
+                            font-size: 16px
                         input
                             max-width: 6.5rem
                 .cvc_input_container
@@ -215,6 +235,7 @@ main
                     gap: 1rem
                     input
                         width: 100%
+                        font-size: 16px
         .submit_button
             height: 5rem
             font-family: inherit
